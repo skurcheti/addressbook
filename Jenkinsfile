@@ -8,7 +8,7 @@ pipeline {
                     process {
                         success {
                             echo "Archeving Artifacts......"
-                            archieveArticacts artifacts: '**/target/*.war'
+                            archieveArtifacts artifacts: '**/target/*.war'
                         }
                     }
             }
