@@ -12,5 +12,10 @@ pipeline {
                         }
                 }
             }
+            stage ('Deploy to sgarnng'){
+                steps {
+                    build job:'pipe-deploy-stag'
+            }
+                }
         }
 }
