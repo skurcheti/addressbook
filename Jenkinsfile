@@ -12,10 +12,17 @@ pipeline {
                         }
                 }
             }
-            stage ('Deploy to sgarnng'){
+            stage ('Deploy to stagning'){
                 steps {
                     build job:'pipe-deploy-stag'
             }
                 }
+            stage ('Deploy to production'){
+                steps {
+                    build job:'pipe-deploy-prod'
+            
+                }    }
         }
 }
+
+
