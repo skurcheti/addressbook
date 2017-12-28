@@ -1,16 +1,24 @@
 pipeline {
-    agent any
-	stages {
-	  stage('Build'){
-              steps{
-              sh 'mvn clean package'
-               }
-	    }
-        stage('Archive-artifacts'){
-             steps {
-                archiveArtifacts artifacts: '**/target/*.war'
-             }
-         }
-        }
+        agent any
+        stages{
+                stage('Build'){i
+                        steps {
+                                sh 'mvn clean package'
+                        }
+			post {
+			   success {
+				echo "Now archeving"
+				archiveArtifacts artifacts: '**/target/*.war'
+			   }
+			}
+			
+                 }
+		 stage('Deploy to Stagning'){
+                    steps{ 
+                        build job: 'Deploy-to-stagning'
+                     
+		    }
+		}
+
+	  }	
 }
-   
