@@ -8,28 +8,28 @@ pipeline {
 		      	}		
 		}
 
-		stage('check code'){
+		stage('check-code'){
 			steps {
 				echo "This is checking your code"
 
                		}
 
 		}
-		stage('Compiling war file'){
+		stage('Compiling-war-file'){
 
 			steps{
 				echo "Compiling war files . . ."
 			}
 		}
 
-		stage('Archieving Artifacts'){
+		stage('Archieving-Artifacts'){
 			steps{
 				echo " Archeving Artifacts . . "
 			}
 		
 		}
 
-		stage('Deploying Artifacts'){
+		stage('Deploying-Artifacts'){
 			steps {
 				echo "This stage Deploy war file to Tomcat"
 				echo "TOMCAT is absent so ending the process"
