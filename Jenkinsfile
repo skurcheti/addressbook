@@ -33,8 +33,9 @@ pipeline {
          }
       }
       stage('Archive Artifacts'){
-         withMaven(maven: 'mvn'){
-               steps {
+          steps {
+                 withMaven(maven: 'mvn'){
+               
                    archiveArtifacts artifacts:'**/target/*.war'  
                }
          }
