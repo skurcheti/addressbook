@@ -2,7 +2,7 @@
 pipeline {
   agent any
       stages {
-          stage(Maven Clean and Compile){
+          stage('Maven Clean and Compile'){
               steps{
                 withMaven(maven: 'mvn') {
 		sh 'mvn clean compile'
