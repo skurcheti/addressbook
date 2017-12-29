@@ -19,7 +19,7 @@ pipeline {
 	   	 }
 	   	 stage('Deployment'){
 	   	 	steps{
-	   	 		sh 'cp target/addressbook-2.0.war /var/lib/tomcat/webapps/addressbook-2.0.war'
+	   	 		sh 'sudo cp target/addressbook-2.0.war /var/lib/tomcat/webapps/addressbook-2.0.war'
 	   	 	}
 	   	 }
 	   }
