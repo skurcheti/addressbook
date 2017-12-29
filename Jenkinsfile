@@ -1,26 +1,43 @@
 
-
 pipeline {
-	agent any 
-	   triggers {
-	   	pollSCM('* * * * *')
-	   }
-	   stages{
-	   	 stage('Packaging in war'){
-	   	 	 steps{
-	   	 	 	sh 'mvn package'
-	   	 	 }
-	   	 }
-
-	   	 stage('Archive Artifacts'){
-	   	 	steps{
-	   	 		archiveArtifacts artifacts: '**/target/*.war'
-	   	 	}
-	   	 }
-	   	 stage('Deployment'){
-	   	 	steps{
-	   	 		sh 'cp target/addressbook-2.0.war /var/lib/tomcat/webapps/addressbook-2.0.war'
-	   	 	}
-	   	 }
-	   }
+  agent any
+      stages {
+          stage(Maven Clean and Compile){
+              steps{
+                withMaven(maven: 'mvn') {
+		sh 'mvn clean compile'
+                }
+              }
+          }
+       stage('testing'){
+          steps{
+             withMaven(maven: 'mvn'){
+                 sh 'mvn test'
+             }
+           }
+       }
+       stage('package'){
+           steps{
+              withMaven(maven: 'mvn){
+              sh 'mvn package'
+              }
+           }
+       }
+      stage('Deploy to local repo'){
+         steps {
+           withMaven('maven: mvn'){
+              steps {
+                sh 'mvn deploy'
+              }
+           }
+         }
+      }
+      stage('Archive Artifacts'){
+         withMaven(maven: 'mvn'){
+               steps {
+                   archiveArtifacts artifacts: '**/target/*.war'  
+               }
+         }
+    
+    }
 }
