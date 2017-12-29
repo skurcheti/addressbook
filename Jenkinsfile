@@ -19,7 +19,7 @@ pipeline {
 	   	 }
 	   	 stage('Deployment'){
 	   	 	steps{
-	   	 		sh 'cp **/target/*.war /var/lib/tomcat/webapps/'
+	   	 		sh "cp '**/target/*.war' '/var/lib/tomcat/webapps/'"
 	   	 	}
 	   	 }
 	   }
