@@ -18,14 +18,14 @@ pipeline {
        }
        stage('package'){
            steps{
-              withMaven(maven: 'mvn){
+              withMaven(maven: 'mvn'){
               sh 'mvn package'
               }
            }
        }
       stage('Deploy to local repo'){
          steps {
-           withMaven('maven: mvn'){
+           withMaven(maven: 'mvn'){
               steps {
                 sh 'mvn deploy'
               }
