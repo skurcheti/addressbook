@@ -2,12 +2,12 @@ pipeline {
    agent any 
       stages{
 	   stage('Cleaning the target folder'){
-               steps{
+               steps {
                    sh 'mvn clean'
                }
-           }
+            }
            stage('testing the repository'){
-                 sh 'mvn test'
+                   sh 'mvn test'
            }     
            stage('Compiling the code'){
                   sh 'mvn compile'
