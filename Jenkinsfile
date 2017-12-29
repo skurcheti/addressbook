@@ -1,40 +1,36 @@
-
 pipeline {
-        agent any
-        stages{
-                stage('Build'){
-                        steps {
-                                sh 'mvn clean package'
-                        }
-			post {
-			   success {
-				echo "Now archeving"
-				archiveArtifacts artifacts: '**/target/*.war'
-			   }
-			}
-			
-                 }
-		 stage('Deploy to Stagning'){
-                    steps { 
-                        build job: 'Deploy-to-stagning'
-                     
-		    }
-		}
-                stage('Deploy to Production'){
-                   steps{
-                       timeout(time:5, unit:'DAYS'){
-		             input message: 'Approve PRODUCTION Deployment?'
-		       }
-		        build job: 'Deploy-to-prod'
-                }
- 		post {
-		   success {
-			echo 'Code Deployment to Production'
-                   }
-		   failure {
-                     echo 'Deployment Failed'
-                   }
-     	        }	
-                }  
-        }
+   agent any 
+      stages{
+	   stage('Cleaning the target folder'){
+               steps{
+                   sh 'mvn clean'
+               }
+           }
+           stage('testing the repository'){
+                 sh 'mvn test'
+           }     
+           stage('Compiling the code'){
+                  sh 'mvn compile'
+           }
+	   stage('packaging the code'){
+                  sh 'mvn package'
+           }
+
+      }
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
