@@ -24,7 +24,7 @@ pipeline {
 	   	 }
 	   	 stage('Deployment'){
 	   	 	steps{
-	   	 		sh 'scp **/target/*.war root@192.168.88.4:/var/lib/tomcat/webapps'
+	   	 		sh 'cp **/target/*.war /var/lib/tomcat/webapps'
 	   	 	}
 	   	 }
 	   }
