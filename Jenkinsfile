@@ -17,13 +17,6 @@ pipeline {
               sh 'mvn package'
               }
        }
-      stage('Deploy to local repo'){
-         steps {
-              steps {
-                sh 'mvn deploy'
-              }
-         }
-      }
       stage('Archive Artifacts'){
           steps {
                
