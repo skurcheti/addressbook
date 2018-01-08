@@ -85,19 +85,7 @@
    
     
     </build>
-   <distributionManagement>
-        <repository>
-            <id>deployment</id>
-            <name>Internal Releases</name>
-            <url>http://192.168.88.10:8081/repository/SAMPLE-REL/</url>
-        </repository>
-        <snapshotRepository>
-            <id>deployment</id>
-            <name>Internal Snapshot Releases</name>
-            <url>http://192.168.88.10:8081/repository/SAMPLE-SNAP/</url>
-        </snapshotRepository>
-    </distributionManagement>
-    
+  
     
     
 </project>
