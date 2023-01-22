@@ -25,12 +25,6 @@ pipeline {
 		sh 'mvn test'
             }
           }
-	  stage('metric test'){
-            steps {
-  		echo "This stage is concerned on code analysis"
-		sh 'mvn cobertura'
-            }
-          }
           stage('Packaging of code'){
              steps { 
                echo " This stage makes the war file"
