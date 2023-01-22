@@ -13,6 +13,12 @@ pipeline {
                  sh 'mvn clean'
              }
            }
+	  stage('Compiling code'){
+             steps{
+                 echo " This stage is concerned with code compilation"
+                 sh 'mvn compile'
+             }
+           }
           stage('testing the code'){
             steps {
   		echo "This stage is concerned on code analysis"
