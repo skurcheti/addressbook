@@ -1,9 +1,5 @@
 pipeline {
-    agent any
-	tools {
-        // Install the Maven version configured as "M3" and add it to the path.
-        maven "mymaven3.9.6"
-    }
+    agent any	
       stages{
          stage('checking Code'){
              steps {
